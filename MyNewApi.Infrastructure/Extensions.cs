@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MyNewApi.Domain;
 
 namespace MyNewApi.Infrastructure
 {
@@ -10,6 +11,8 @@ namespace MyNewApi.Infrastructure
         {
             services.AddDbContext<MyApiDbContext>(options => options.UseNpgsql(configuration.GetConnectionString("Database")));
             services.AddHostedService<DatabaseMigrationService>();
+
+            services.AddScoped<IProductRepository, ProductRepository>();
 
             return services;
         }

@@ -3,7 +3,7 @@ using MyNewApi.Domain.Entities;
 
 namespace MyNewApi.Infrastructure
 {
-    internal class MyApiDbContext : DbContext
+    public class MyApiDbContext : DbContext
     {
         public MyApiDbContext()
         {
