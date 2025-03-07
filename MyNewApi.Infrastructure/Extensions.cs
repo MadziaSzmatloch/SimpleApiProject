@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyNewApi.Domain;
+using MyNewApi.Infrastructure.Repositories;
 
 namespace MyNewApi.Infrastructure
 {

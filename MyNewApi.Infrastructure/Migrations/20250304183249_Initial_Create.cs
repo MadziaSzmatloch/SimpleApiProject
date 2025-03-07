@@ -19,7 +19,7 @@ namespace MyNewApi.Infrastructure.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "text", nullable: false),
                     Price = table.Column<double>(type: "double precision", nullable: false),
-                    AvailableQueantity = table.Column<int>(type: "integer", nullable: false)
+                    AvailableQuantity = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {

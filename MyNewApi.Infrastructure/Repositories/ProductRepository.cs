@@ -1,13 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyNewApi.Domain;
 using MyNewApi.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MyNewApi.Infrastructure
+namespace MyNewApi.Infrastructure.Repositories
 {
     internal class ProductRepository : IProductRepository
     {
@@ -20,9 +15,14 @@ namespace MyNewApi.Infrastructure
             products = myApiDbContext.Products;
         }
 
-        public async Task<List<Product>> GetAll()
+        public async Task<IEnumerable<Product>> GetAll()
         {
             return await products.ToListAsync();
+        }
+
+        public async Task<Product> GetById(int id)
+        {
+            return await products.FirstOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task Add(Product product)
@@ -36,7 +36,7 @@ namespace MyNewApi.Infrastructure
             var forUpdate = await products.FirstAsync(p => p.Id == product.Id);
             forUpdate.Name = product.Name;
             forUpdate.Price = product.Price;
-            forUpdate.AvailableQueantity = product.AvailableQueantity;
+            forUpdate.AvailableQuantity = product.AvailableQuantity;
 
             await myApiDbContext.SaveChangesAsync();
         }
