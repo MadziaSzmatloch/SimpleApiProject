@@ -9,6 +9,6 @@ namespace MyNewApi.Domain.Interfaces
         public Task Add(Product product);
         public Task Update(Product product);
         public Task Delete(int id);
-        public bool ExistsByName(string name);
+        public Product ExistsByName(string name);
     }
 }

@@ -16,8 +16,13 @@ namespace MyNewApi.Application.Validators
             if (!Regex.IsMatch(product.Name, "^[a-zA-Z0-9]+$"))
                 throw new ArgumentException("Name can only contain letters and numbers.");
 
-            if (_productRepository.ExistsByName(product.Name))
-                throw new ArgumentException("Name must be unique.");
+            var sameName = _productRepository.ExistsByName(product.Name);
+            if (sameName != null)
+            {
+                if (sameName.Id != product.Id)
+                    throw new ArgumentException("Name must be unique.");
+            }
+
         }
     }
 }

@@ -49,9 +49,9 @@ namespace MyNewApi.Infrastructure.Repositories
             await myApiDbContext.SaveChangesAsync();
         }
 
-        public bool ExistsByName(string name)
+        public Product ExistsByName(string name)
         {
-            return myApiDbContext.Products.Any(p => p.Name == name);
+            return myApiDbContext.Products.FirstOrDefault(p => p.Name == name);
         }
     }
 }
