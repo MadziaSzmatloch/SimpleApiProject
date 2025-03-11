@@ -15,4 +15,8 @@
     <ProjectReference Include="..\MyNewApi.Domain\MyNewApi.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

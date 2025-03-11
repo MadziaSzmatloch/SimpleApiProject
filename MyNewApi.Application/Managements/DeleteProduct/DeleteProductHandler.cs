@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using MyNewApi.Domain;
+using MyNewApi.Domain.Interfaces;
 
 namespace MyNewApi.Application.Managements.DeleteProduct
 {

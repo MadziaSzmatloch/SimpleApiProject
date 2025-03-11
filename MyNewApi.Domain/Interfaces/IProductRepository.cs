@@ -1,6 +1,6 @@
 ﻿using MyNewApi.Domain.Entities;
 
-namespace MyNewApi.Domain
+namespace MyNewApi.Domain.Interfaces
 {
     public interface IProductRepository
     {
@@ -9,5 +9,6 @@ namespace MyNewApi.Domain
         public Task Add(Product product);
         public Task Update(Product product);
         public Task Delete(int id);
+        public bool ExistsByName(string name);
     }
 }

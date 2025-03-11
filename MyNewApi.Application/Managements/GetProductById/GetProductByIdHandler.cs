@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using MyNewApi.Application.DTO;
 using MyNewApi.Application.Managements.Mappings;
-using MyNewApi.Domain;
+using MyNewApi.Domain.Interfaces;
 
 namespace MyNewApi.Application.Managements.GetProductById
 {

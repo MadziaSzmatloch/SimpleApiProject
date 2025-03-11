@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MyNewApi.Domain;
 using MyNewApi.Domain.Entities;
+using MyNewApi.Domain.Interfaces;
 
 namespace MyNewApi.Infrastructure.Repositories
 {
@@ -47,6 +47,11 @@ namespace MyNewApi.Infrastructure.Repositories
             products.Remove(productToDelete);
 
             await myApiDbContext.SaveChangesAsync();
+        }
+
+        public bool ExistsByName(string name)
+        {
+            return myApiDbContext.Products.Any(p => p.Name == name);
         }
     }
 }

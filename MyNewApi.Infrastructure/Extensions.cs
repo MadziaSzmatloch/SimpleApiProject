@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MyNewApi.Domain;
+using MyNewApi.Domain.Interfaces;
 using MyNewApi.Infrastructure.Repositories;
 
 namespace MyNewApi.Infrastructure
@@ -14,6 +14,7 @@ namespace MyNewApi.Infrastructure
             services.AddHostedService<DatabaseMigrationService>();
 
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
 
             return services;
         }

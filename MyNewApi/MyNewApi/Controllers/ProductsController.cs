@@ -5,7 +5,7 @@ using MyNewApi.Application.Managements.DeleteProduct;
 using MyNewApi.Application.Managements.GetAllProducts;
 using MyNewApi.Application.Managements.GetProductById;
 using MyNewApi.Application.Managements.UpdateProduct;
-using MyNewApi.Domain;
+using MyNewApi.Domain.Interfaces;
 
 namespace MyNewApi.Controllers
 {
