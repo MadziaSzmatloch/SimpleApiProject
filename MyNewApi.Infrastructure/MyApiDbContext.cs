@@ -17,5 +17,6 @@ namespace MyNewApi.Infrastructure
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<BannedWord> BannedWords { get; set; }
     }
 }
