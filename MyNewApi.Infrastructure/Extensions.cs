@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyNewApi.Domain.Interfaces;
 using MyNewApi.Infrastructure.Repositories;
+using MyNewApi.Infrastructure.Seeders;
 
 namespace MyNewApi.Infrastructure
 {
@@ -15,6 +16,8 @@ namespace MyNewApi.Infrastructure
 
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<CategorySeeder>();
+            services.AddHostedService<DatabaseSeeder>();
 
             return services;
         }
