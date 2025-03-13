@@ -5,15 +5,13 @@ using MyNewApi.Application.Managements.DeleteProduct;
 using MyNewApi.Application.Managements.GetAllProducts;
 using MyNewApi.Application.Managements.GetProductById;
 using MyNewApi.Application.Managements.UpdateProduct;
-using MyNewApi.Domain.Interfaces;
 
 namespace MyNewApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ProductsController(IProductRepository productRepository, IMediator mediator) : ControllerBase
+    public class ProductsController(IMediator mediator) : ControllerBase
     {
-        private readonly IProductRepository _productRepository = productRepository;
         private readonly IMediator _mediator = mediator;
 
         [HttpGet]
