@@ -17,5 +17,13 @@ namespace MyNewApi.Infrastructure
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<BannedWord> BannedWords { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<BannedWord>()
+                .HasIndex(x => x.Word)
+                .IsUnique();
+        }
     }
 }

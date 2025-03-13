@@ -16,7 +16,9 @@ namespace MyNewApi.Infrastructure
 
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IBannedWordRepository, BannedWordRepository>();
             services.AddScoped<CategorySeeder>();
+            services.AddScoped<BannedWordsSeeder>();
             services.AddHostedService<DatabaseSeeder>();
 
             return services;

@@ -4,6 +4,6 @@ namespace MyNewApi.Domain.Interfaces
 {
     public interface ICategoryRepository
     {
-        public Category GetById(int id);
+        public Category GetById(Guid id);
     }
 }

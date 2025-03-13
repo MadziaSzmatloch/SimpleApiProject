@@ -3,12 +3,10 @@ using MyNewApi.Application.DTO;
 
 namespace MyNewApi.Application.Managements.AddProduct
 {
-    public record AddProductRequest() : IRequest<ProductDetailDto>
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public double Price { get; set; }
-        public int AvailableQuantity { get; set; }
-        public int CategoryId { get; set; }
-    }
+    public record AddProductRequest(
+        string Name,
+        double Price,
+        int AvailableQuantity,
+        Guid CategoryId
+        ) : IRequest<ProductDetailDto>;
 }

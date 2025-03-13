@@ -5,15 +5,13 @@ using MyNewApi.Application.Managements.DeleteProduct;
 using MyNewApi.Application.Managements.GetAllProducts;
 using MyNewApi.Application.Managements.GetProductById;
 using MyNewApi.Application.Managements.UpdateProduct;
-using MyNewApi.Domain.Interfaces;
 
 namespace MyNewApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ProductsController(IProductRepository productRepository, IMediator mediator) : ControllerBase
+    public class ProductsController(IMediator mediator) : ControllerBase
     {
-        private readonly IProductRepository _productRepository = productRepository;
         private readonly IMediator _mediator = mediator;
 
         [HttpGet]
@@ -25,7 +23,7 @@ namespace MyNewApi.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetById(Guid id)
         {
             var product = await _mediator.Send(new GetProductByIdRequest() { Id = id });
             return Ok(product);
@@ -47,7 +45,7 @@ namespace MyNewApi.Controllers
 
         [HttpDelete]
         [Route("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(Guid id)
         {
             await _mediator.Send(new DeleteProductRequest() { Id = id });
             return Ok();
