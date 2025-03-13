@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyNewApi.Infrastructure;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MyNewApi.Infrastructure.Migrations
 {
     [DbContext(typeof(MyApiDbContext))]
-    partial class MyApiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250313160149_Add_Product_History")]
+    partial class Add_Product_History
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -93,9 +96,6 @@ namespace MyNewApi.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("ModificationTime")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<int>("NewAvailableQuantity")
                         .HasColumnType("integer");
 
@@ -109,14 +109,12 @@ namespace MyNewApi.Infrastructure.Migrations
                     b.Property<double>("NewPrice")
                         .HasColumnType("double precision");
 
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("uuid");
+                    b.Property<DateTime>("midificationTime")
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
                     b.HasIndex("NewCategoryId");
-
-                    b.HasIndex("ProductId");
 
                     b.ToTable("ProductHistories");
                 });
@@ -140,15 +138,7 @@ namespace MyNewApi.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MyNewApi.Domain.Entities.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("NewCategory");
-
-                    b.Navigation("Product");
                 });
 #pragma warning restore 612, 618
         }
