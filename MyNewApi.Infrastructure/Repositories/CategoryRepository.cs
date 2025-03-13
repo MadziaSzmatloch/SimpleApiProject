@@ -9,7 +9,7 @@ namespace MyNewApi.Infrastructure.Repositories
         private readonly MyApiDbContext _myApiDbContext = myApiDbContext;
         private readonly DbSet<Category> _categories = myApiDbContext.Categories;
 
-        public Category GetById(int id)
+        public Category GetById(Guid id)
         {
             return _categories.FirstOrDefault(c => c.Id == id);
         }

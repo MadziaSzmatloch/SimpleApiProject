@@ -20,7 +20,7 @@ namespace MyNewApi.Infrastructure.Repositories
             return await products.ToListAsync();
         }
 
-        public async Task<Product> GetById(int id)
+        public async Task<Product> GetById(Guid id)
         {
             return await products.FirstOrDefaultAsync(p => p.Id == id);
         }
@@ -41,7 +41,7 @@ namespace MyNewApi.Infrastructure.Repositories
             await myApiDbContext.SaveChangesAsync();
         }
 
-        public async Task Delete(int id)
+        public async Task Delete(Guid id)
         {
             var productToDelete = await products.FirstAsync(p => p.Id == id);
             products.Remove(productToDelete);

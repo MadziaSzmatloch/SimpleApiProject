@@ -16,7 +16,6 @@ namespace MyNewApi.Application.Managements.AddProduct
         {
             var product = new Product()
             {
-                Id = request.Id,
                 Name = request.Name,
                 Price = request.Price,
                 AvailableQuantity = request.AvailableQuantity,

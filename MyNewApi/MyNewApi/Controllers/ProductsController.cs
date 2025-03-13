@@ -23,7 +23,7 @@ namespace MyNewApi.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetById(Guid id)
         {
             var product = await _mediator.Send(new GetProductByIdRequest() { Id = id });
             return Ok(product);
@@ -45,7 +45,7 @@ namespace MyNewApi.Controllers
 
         [HttpDelete]
         [Route("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(Guid id)
         {
             await _mediator.Send(new DeleteProductRequest() { Id = id });
             return Ok();

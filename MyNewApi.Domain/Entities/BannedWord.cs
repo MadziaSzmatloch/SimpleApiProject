@@ -2,7 +2,7 @@
 {
     public class BannedWord
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Word { get; set; } = string.Empty;
     }
 }
