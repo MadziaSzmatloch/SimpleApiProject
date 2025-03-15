@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyNewApi.Infrastructure;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MyNewApi.Infrastructure.Migrations
 {
     [DbContext(typeof(MyApiDbContext))]
-    partial class MyApiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250313160743_Add_Product_To_Product_History")]
+    partial class Add_Product_To_Product_History
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -93,9 +96,6 @@ namespace MyNewApi.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("ModificationTime")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<int>("NewAvailableQuantity")
                         .HasColumnType("integer");
 
@@ -111,6 +111,9 @@ namespace MyNewApi.Infrastructure.Migrations
 
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uuid");
+
+                    b.Property<DateTime>("midificationTime")
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 

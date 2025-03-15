@@ -1,4 +1,5 @@
 using MyNewApi.Application;
+using MyNewApi.Application.Exceptions;
 using MyNewApi.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +22,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseMiddleware<ErrorHandlingMiddleware>();
 
 app.UseHttpsRedirection();
 

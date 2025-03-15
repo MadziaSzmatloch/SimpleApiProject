@@ -1,4 +1,5 @@
-﻿using MyNewApi.Domain.Entities;
+﻿using MyNewApi.Application.Exceptions;
+using MyNewApi.Domain.Entities;
 using MyNewApi.Domain.Interfaces;
 using System.Text.RegularExpressions;
 
@@ -11,16 +12,16 @@ namespace MyNewApi.Application.Validators
         public void Validate(Product product)
         {
             if (string.IsNullOrWhiteSpace(product.Name) || product.Name.Length < 3 || product.Name.Length > 20)
-                throw new ArgumentException("Name must be between 3 and 20 characters.");
+                throw new ValidationException("Name must be between 3 and 20 characters.");
 
             if (!Regex.IsMatch(product.Name, "^[a-zA-Z0-9]+$"))
-                throw new ArgumentException("Name can only contain letters and numbers.");
+                throw new ValidationException("Name can only contain letters and numbers.");
 
             var sameName = _productRepository.ExistsByName(product.Name);
             if (sameName != null)
             {
                 if (sameName.Id != product.Id)
-                    throw new ArgumentException("Name must be unique.");
+                    throw new ValidationException("Name must be unique.");
             }
 
         }

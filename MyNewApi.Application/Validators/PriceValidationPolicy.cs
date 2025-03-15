@@ -1,4 +1,5 @@
-﻿using MyNewApi.Domain.Entities;
+﻿using MyNewApi.Application.Exceptions;
+using MyNewApi.Domain.Entities;
 using MyNewApi.Domain.Interfaces;
 
 namespace MyNewApi.Application.Validators
@@ -9,18 +10,14 @@ namespace MyNewApi.Application.Validators
 
         public void Validate(Product product)
         {
-            //if (product.CategoryId == 0)
-            //    throw new ArgumentException("Product must have a category assigned.");
-
-
             product.Category ??= _categoryRepository.GetById(product.CategoryId);
 
             if (product.Category == null)
-                throw new ArgumentException("There is no category with given id");
+                throw new ValidationException("There is no category with given id");
 
 
             if (product.Price < product.Category.MinPrice || product.Price > product.Category.MaxPrice)
-                throw new ArgumentException($"Price must be between {product.Category.MinPrice} and {product.Category.MaxPrice}.");
+                throw new ValidationException($"Price must be between {product.Category.MinPrice} and {product.Category.MaxPrice}.");
         }
     }
 }

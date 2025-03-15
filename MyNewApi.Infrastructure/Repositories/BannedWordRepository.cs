@@ -26,5 +26,10 @@ namespace MyNewApi.Infrastructure.Repositories
         {
             return await _bannedWoords.ToListAsync();
         }
+
+        public async Task<BannedWord> GetById(string word)
+        {
+            return await _bannedWoords.FirstOrDefaultAsync(x => x.Word == word);
+        }
     }
 }
