@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using MyNewApi.Application.Exceptions;
 using MyNewApi.Application.Validators;
 using System.Reflection;
 
@@ -12,6 +13,7 @@ namespace MyNewApi.Application
             services.AddScoped<IProductValidationPolicy, NameValidationPolicy>();
             services.AddScoped<IProductValidationPolicy, PriceValidationPolicy>();
             services.AddScoped<IProductValidationPolicy, AvailableQuantityValidationPolicy>();
+            services.AddScoped<ErrorHandlingMiddleware>();
             services.AddScoped<ProductValidator>();
         }
     }

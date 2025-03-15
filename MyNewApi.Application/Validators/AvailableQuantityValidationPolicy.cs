@@ -1,4 +1,5 @@
-﻿using MyNewApi.Domain.Entities;
+﻿using MyNewApi.Application.Exceptions;
+using MyNewApi.Domain.Entities;
 
 namespace MyNewApi.Application.Validators
 {
@@ -7,7 +8,7 @@ namespace MyNewApi.Application.Validators
         public void Validate(Product product)
         {
             if (product.AvailableQuantity < 0)
-                throw new ArgumentException("Available quantity cannot be negative.");
+                throw new ValidationException("Available quantity cannot be negative.");
         }
     }
 }

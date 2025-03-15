@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using MyNewApi.Application.DTO;
+using MyNewApi.Application.Exceptions;
 using MyNewApi.Application.Managements.Mappings;
 using MyNewApi.Application.Validators;
 using MyNewApi.Domain.Entities;
@@ -15,6 +16,12 @@ namespace MyNewApi.Application.Managements.UpdateProduct
 
         public async Task<ProductDetailDto> Handle(UpdateProductRequest request, CancellationToken cancellationToken)
         {
+            var productToEdit = await _productRepository.GetById(request.Id);
+            if (productToEdit == null)
+            {
+                throw new NotFoundException($"Product with id: {request.Id} doesn't exist");
+            }
+
             var product = new Product()
             {
                 Id = request.Id,
