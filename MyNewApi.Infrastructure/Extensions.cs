@@ -21,6 +21,8 @@ namespace MyNewApi.Infrastructure
             services.AddScoped<CategorySeeder>();
             services.AddScoped<BannedWordsSeeder>();
             services.AddHostedService<DatabaseSeeder>();
+            services.AddTransient<DatabaseSeeder>();
+
 
             return services;
         }

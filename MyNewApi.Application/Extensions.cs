@@ -15,6 +15,7 @@ namespace MyNewApi.Application
             services.AddScoped<IProductValidationPolicy, AvailableQuantityValidationPolicy>();
             services.AddScoped<ErrorHandlingMiddleware>();
             services.AddScoped<ProductValidator>();
+            services.AddScoped<ErrorHandlingMiddleware>();
         }
     }
 }

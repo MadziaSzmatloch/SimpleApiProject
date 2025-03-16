@@ -14,5 +14,11 @@ namespace MyNewApi.Infrastructure.Repositories
             await _productHistories.AddAsync(productHistory);
             await _myApiDbContext.SaveChangesAsync();
         }
+
+        public async Task<IEnumerable<ProductHistory>> Get()
+        {
+            var histories = await _productHistories.ToListAsync();
+            return histories;
+        }
     }
 }
