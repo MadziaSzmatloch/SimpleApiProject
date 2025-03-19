@@ -71,7 +71,7 @@ namespace MyNewApi.Test
         }
 
         [Fact]
-        public async Task CreateProduct_WithLongdName()
+        public async Task CreateProduct_WithLongName()
         {
             // Arrange
             var request = new AddProductRequest("nanananananananananananananananananana", 100, 10, Guid.Parse("a7066aad-9e0d-459e-979c-84df0bd87db9"));
