@@ -12,7 +12,6 @@ namespace MyNewApi.Test
         [Post("/products")]
         Task<ApiResponse<ProductDetailDto>> CreateProduct([Body] AddProductRequest request);
 
-
         [Get("/ProductHistory")]
         Task<IEnumerable<ProductHistoryDto>> GetProductsHistories();
     }

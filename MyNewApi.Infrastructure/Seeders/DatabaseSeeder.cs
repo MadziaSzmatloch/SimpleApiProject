@@ -14,9 +14,6 @@ namespace MyNewApi.Infrastructure.Seeders
             var categorySeeder = scope.ServiceProvider.GetRequiredService<CategorySeeder>();
             await categorySeeder.Seed();
             await bannedWordsSeeder.Seed();
-
-
-            Console.WriteLine("DatabaseSeeder.StartAsync - END");
         }
 
         public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;

@@ -18,7 +18,6 @@ namespace MyNewApi.Test
             var context = scope.ServiceProvider.GetRequiredService<MyApiDbContext>();
 
             await context.Database.EnsureDeletedAsync();
-            //await context.Database.EnsureCreatedAsync();
             await context.Database.MigrateAsync();
 
             var seeder = scope.ServiceProvider.GetRequiredService<DatabaseSeeder>();

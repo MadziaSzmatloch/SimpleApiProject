@@ -9,14 +9,12 @@ namespace MyNewApi.Test
     public class UnitTests : IClassFixture<CustomWebApplicationFactory>
     {
         private readonly IMyNewApi _myNewApi;
-        //private readonly CustomWebApplicationFactory _factory;
 
         public UnitTests(CustomWebApplicationFactory factory)
         {
             var client = factory.CreateClient();
             _myNewApi = RestService.For<IMyNewApi>(client);
         }
-
 
         [Fact]
         public async Task GetProducts()
@@ -58,7 +56,6 @@ namespace MyNewApi.Test
             // Assert
             response.StatusCode.Should().Be(HttpStatusCode.NotFound);
         }
-
 
         [Fact]
         public async Task CreateProduct_WithShortName()
